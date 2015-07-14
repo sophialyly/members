@@ -6,7 +6,7 @@ http://mongodb.org
 mac 的安装方式  
 http://brew.sh/  
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"  
-homebrew install mongodb  
+brew install mongodb  
     
 #安装成服务  
 mongod --dbpath ./data --logpath ./log --serviceName MongoDB --install  
@@ -95,10 +95,26 @@ db.user.drop();
 db.dropDatabase();  
 
 #如何操作文档
-
-  
-
-
+##单条插入
+db.school.insert({name:'zfpx',age:6});
+##多条插入
+ db.school.insert([{name:'zfpx2',age:7},{name:'zfpx3',age:8}]);
+##save保存
+db.school.save({_id:1,name:'zfpx6',age:66});
+如果ID存在，那么更新其它字段，如果ID不存在，那么保存此文档
+##删除文档
+参数为要删除的文档条件
+db.school.remove({name:'zfpx2'});
+##根据条件更新整个文档
+db.school.update({_id:1},{name:'zfpx7',age:77});
+##更新某些字段
+ db.school.update({_id:1,name:'zfpx8'},{$set:{age:'99'}});
+##删除某些字段
+db.school.update({_id:1,name:'zfpx8'},{$unset:{age:'99'}});
+##更新或者插入
+db.school.update({name:'zfpx8'},{name:'zfpx9',age:6},{upsert:true});
+##一次更新多行
+db.school.update({age:7},{$set:{age:8}},{multi:true});
 
 
 
