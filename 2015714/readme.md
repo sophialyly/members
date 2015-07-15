@@ -13,8 +13,9 @@ brew install mongodb
 
   
 #命令行启动
-必须先创建文件夹  
+必须先创建文件夹(不能和下一步一起执行) 
 mkdir data  
+再启动服务
 mongod --dbpath ./data  
 另开一个命令行窗口 
 再去执行客户端连接 mongo 
