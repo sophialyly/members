@@ -8,7 +8,11 @@
 <body >
 <!-- 这是我们的控制器 -->
 <div ng-controller="appCtrl">
-   <span>{{say}}</span>
+   <span>{{name}}</span>
+    <input type="button" ng-click="say()" value="点我" />
+<ul>
+    <li ng-repeat="book in books">{{book['name']}}</li>
+</ul>
 </div>
 
 </body>
@@ -18,11 +22,15 @@
     //这是控制器的定义
     app.controller('appCtrl',function($rootScope,$scope){
         //就是我们的模型了
-        setTimeout(function(){
-            $scope.$apply(function(){
-                $scope.say = 'zfpx';//给模型写义名称属性
-            })
-        },2000);
+        //setTimeout(function(){
+           // $scope.$apply(function(){
+                $scope.name = 'zfpx';//给模型写义名称属性
+                $scope.say= function(){
+                    alert($scope.name);
+                }
+                $scope.books = [{name:'node.js'},{name:'javascript'}]
+           // })
+       // },2000);
 
     });
 
