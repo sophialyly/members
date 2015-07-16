@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="appModule">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../bower_components/angular/angular.js"></script>
+</head>
+<body >
+<!-- 这是我们的控制器 -->
+<div ng-controller="appCtrl">
+   <span>{{say}}</span>
+</div>
+
+</body>
+<script>
+    //这是我们的模块
+    var app = angular.module('appModule',[]);
+    //这是控制器的定义
+    app.controller('appCtrl',function($rootScope,$scope){
+        //就是我们的模型了
+        setTimeout(function(){
+            $scope.$apply(function(){
+                $scope.say = 'zfpx';//给模型写义名称属性
+            })
+        },2000);
+
+    });
+
+</script>
+</html>
