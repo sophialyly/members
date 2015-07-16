@@ -8,17 +8,28 @@
 <body >
 <!-- 这是我们的控制器 -->
 <div ng-controller="appCtrl">
-  {{name}}
+    {{name}}
+    <div ng-controller="homeCtrl">
+        {{name}}
+    </div>
 </div>
+
+
 </body>
 <script>
     //这是我们的模块
     var app = angular.module('appModule',[]);
     //这是控制器的定义
-    app.controller('appCtrl',function($scope){
+    app.controller('appCtrl',function($rootScope,$scope){
+        //就是我们的模型了
+        $scope.name = 'zfpx';//给模型写义名称属性
+        $rootScope.root = 'root';
+    });
+
+    app.controller('homeCtrl',function($scope){
         //就是我们的模型了
         console.log($scope);//{}
-        $scope.name = 'zfpx';//给模型写义名称属性
+        //$scope.name = 'home';//给模型写义名称属性
     });
 </script>
 </html>
